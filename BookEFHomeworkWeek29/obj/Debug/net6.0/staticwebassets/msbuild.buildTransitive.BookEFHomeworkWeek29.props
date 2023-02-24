@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/BookEFHomeworkWeek29.props" />
+</Project>
