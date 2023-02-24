@@ -7,6 +7,9 @@ namespace BookEFHomeworkWeek29.Services.Interfaces
 	{
 		Task<List<Author>> Get();
 		Task<Author> Get(int id);
+		Task<Author> Create(Author author);
+		Task<bool> Update(int id, Author author);
+		Task<bool> Remove(int id);
 	}
 }
 

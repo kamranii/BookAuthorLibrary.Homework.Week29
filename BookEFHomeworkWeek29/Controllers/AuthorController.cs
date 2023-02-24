@@ -37,6 +37,30 @@ namespace BookEFHomeworkWeek29.Controllers
                 return NotFound("Author doesn't exist");
             return Ok(author);
         }
+
+        [HttpPost]
+        public async Task<ActionResult<Author>> Post(Author author)
+        {
+            await _authorService.Create(author);
+            return CreatedAtAction(nameof(Get), new { id = author.AthrId }, author);
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, Author author)
+        {
+            var success = await _authorService.Update(id, author);
+            if (!success)
+                return BadRequest("Something went wrong");
+            return NoContent();
+        }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var success = await _authorService.Remove(id);
+            if (!success)
+                return BadRequest("Something went wrong");
+            return NoContent();
+
+        }
     }
 }
 
